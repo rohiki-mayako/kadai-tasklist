@@ -1,22 +1,22 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @task = Task.all
   end
 
   def show
-    @tasks = Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def new
-    @tasks = Task.new
+    @task = Task.new
   end
 
   def create
-    @tasks = Task.new(task_params)
+    @task = Task.new(task_params)
 
-    if @tasks.save
+    if @task.save
       flash[:success] = 'Task が正常に登録されました'
-      redirect_to @tasks
+      redirect_to @task
     else
       flash.now[:danger] = 'Task が投稿されませんでした'
       render :new
